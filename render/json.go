@@ -35,8 +35,8 @@ type JsonpJSON struct {
 	Data     interface{}
 }
 
-// AsciiJSON contains the given interface object.
-type AsciiJSON struct {
+// ASCIIJSON contains the given interface object.
+type ASCIIJSON struct {
 	Data interface{}
 }
 
@@ -50,7 +50,7 @@ type PureJSON struct {
 
 var jsonContentType = []string{"application/json; charset=utf-8"}
 var jsonpContentType = []string{"application/javascript; charset=utf-8"}
-var jsonAsciiContentType = []string{"application/json"}
+var jsonASCIIContentType = []string{"application/json"}
 
 // Render (JSON) writes data with custom ContentType.
 func (r JSON) Render(w http.ResponseWriter) (err error) {
@@ -151,8 +151,8 @@ func (r JsonpJSON) WriteContentType(w http.ResponseWriter) {
 	writeContentType(w, jsonpContentType)
 }
 
-// Render (AsciiJSON) marshals the given interface object and writes it with custom ContentType.
-func (r AsciiJSON) Render(w http.ResponseWriter) (err error) {
+// Render (ASCIIJSON) marshals the given interface object and writes it with custom ContentType.
+func (r ASCIIJSON) Render(w http.ResponseWriter) (err error) {
 	r.WriteContentType(w)
 	ret, err := json.Marshal(r.Data)
 	if err != nil {
@@ -172,9 +172,9 @@ func (r AsciiJSON) Render(w http.ResponseWriter) (err error) {
 	return err
 }
 
-// WriteContentType (AsciiJSON) writes JSON ContentType.
-func (r AsciiJSON) WriteContentType(w http.ResponseWriter) {
-	writeContentType(w, jsonAsciiContentType)
+// WriteContentType (ASCIIJSON) writes JSON ContentType.
+func (r ASCIIJSON) WriteContentType(w http.ResponseWriter) {
+	writeContentType(w, jsonASCIIContentType)
 }
 
 // Render (PureJSON) writes custom ContentType and encodes the given interface object.

@@ -17,7 +17,7 @@ import (
 
 var errUnknownType = errors.New("unknown type")
 
-func mapUri(ptr interface{}, m map[string][]string) error {
+func mapURI(ptr interface{}, m map[string][]string) error {
 	return mapFormByTag(ptr, m, "uri")
 }
 
